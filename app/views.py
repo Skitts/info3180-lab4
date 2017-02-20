@@ -33,14 +33,14 @@ def about():
 def filelisting():
     if not session.get('logged_in'):
         abort(401)
-    return render_template('uploads.html', docs=get_list())
+    return render_template('somethingnew.html', docs=get_list())
    
   
   
     
 def get_list():
     docs = []
-    for files in os.walk(app.config['UPLOAD_FOLDER']):
+    for subdir, dirs, files in os.walk(app.config['UPLOAD_FOLDER']):
         for file in files:
             if not file.startswith('.'):
                 docs.append(file)
